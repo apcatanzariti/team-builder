@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import styled from 'styled-components';
 import Form from './Form';
 import Member from './Member'
 
@@ -49,17 +50,34 @@ function App() {
   const [formValues, setFormValues] = useState(initialFormValues);
 
   return (
-    <div>
-    <Form values={formValues} update={updateForm}/>
+    <StyledContainer>
+    <Form values={formValues} update={updateForm} submit={submitForm}/>
+    <h2>Our Current Members!</h2>
     {
       teamMembers.map(member =>{
         return (
-          <Member details={member} />
+          <center><Member details={member} /></center>
         );
       })
     }
-    </div>
+    </StyledContainer>
   );
 }
+
+//----------------------------------BEGIN STYLES---------------------------------
+
+const StyledContainer = styled.div`
+  margin: 0 auto;
+  width: 80%;
+  padding: 2%;
+  text-align: center;
+  // border: solid 1px red;
+
+  h2 {
+    color: #00bfff;
+  }
+`;
+
+//-------------------------------------EXPORT------------------------------------
 
 export default App;
